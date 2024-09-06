@@ -78,6 +78,8 @@ export class SideMenu extends LitElement {
           <!-- Uso de resolveRouterPath para manejar la navegación -->
           <sl-button href="${resolveRouterPath('home')}" variant="primary">Inicio</sl-button>
           <sl-button href="${resolveRouterPath('about')}" variant="primary">Acerca de</sl-button>
+          <sl-button href="${resolveRouterPath('participant-list')}" variant="primary">ppppp</sl-button>
+          <sl-button href="${resolveRouterPath('form')}" variant="primary">form</sl-button>
         </nav>
       </div>
     `;

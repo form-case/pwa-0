@@ -1,5 +1,3 @@
-// docs for router https://github.com/thepassle/app-tools/blob/master/router/README.md
-
 import { html } from 'lit';
 
 if (!(globalThis as any).URLPattern) {
@@ -30,19 +28,31 @@ export const router = new Router({
           lazy(() => import('./pages/app-about/app-about.js')),
         ],
         render: () => html`<app-about></app-about>`
+      },
+      {
+        path: resolveRouterPath('participant-list'),
+        title: 'Participant List',
+        plugins: [
+          lazy(() => import('./pages/participant-list.js')),
+        ],
+        render: () => html`<app-participant-list></app-participant-list>`
+      },
+      {
+        path: resolveRouterPath('form'),
+        title: 'Forms',
+        plugins: [
+          lazy(() => import('./pages/form.js')),  // Asegúrate de que sea form.js, no app-form.js
+        ],
+        render: () => html`<app-form></app-form>`
       }
     ]
   });
 
-  // This function will resolve a path with whatever Base URL was passed to the vite build process.
-  // Use of this function throughout the starter is not required, but highly recommended, especially if you plan to use GitHub Pages to deploy.
-  // If no arg is passed to this function, it will return the base URL.
-
-  export function resolveRouterPath(unresolvedPath?: string) {
-    var resolvedPath = baseURL;
-    if(unresolvedPath) {
-      resolvedPath = resolvedPath + unresolvedPath;
-    }
-
-    return resolvedPath;
+// Esta función resuelve la ruta con la URL base pasada durante el proceso de construcción
+export function resolveRouterPath(unresolvedPath?: string) {
+  var resolvedPath = baseURL;
+  if(unresolvedPath) {
+    resolvedPath = resolvedPath + unresolvedPath;
   }
+  return resolvedPath;
+}
